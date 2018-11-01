@@ -23,7 +23,7 @@ function testLogin(){
             if(this.response=="fejl") {
                 alert("wrong info, you have lost your asian")
             }else{
-                window.location.href= "http://127.0.0.1:5500/menuside.html"
+                window.location.href= "http://127.0.0.1:5500/menu/menuside.html"
                 document.cookie="loginId="+this.response+""
                 //alert(document.cookie)
             }
