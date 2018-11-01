@@ -3,7 +3,7 @@ var url = "mongodb://localhost:27017/";
 exports.searchDB = function(brugernavn,password){
 MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("Tododb");
+  var dbo = db.db("dbSprog");
   dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {username : 0,password : 0}}).toArray(function(err, result) {
     if (err) throw err;
     console.log(result);
