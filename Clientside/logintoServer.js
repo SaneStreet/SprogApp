@@ -27,18 +27,22 @@ function testLogin(){
                 switch(this.response){
                     case "Kursist":
                     window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
+                    document.cookie="loginPrivilege="+this.response+""
                     break;
 
                     case "Sprogmakker":
                     window.location.href= "http://127.0.0.1:5500/menu/sprogmakker/sprogmakkerside.html"
+                    document.cookie="loginPrivilege="+this.response+""
                     break;
 
                     case "Underviser":
                     window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                    document.cookie="loginPrivilege="+this.response+""
                     break;
 
                     case "":
                     window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                    document.cookie="loginPrivilege="+this.response+""
                 }
 
 
