@@ -6,9 +6,10 @@ exports.login_as_client = function(req, res){
     //var x = dbfind.searchDB(user_name,password_in);
     //console.log(x)
     
+    var privilege = "noget fejl";
     
     //res.send(x)
-    console.log("bla222")
+    console.log("Forbindelse oprettet")
 
     var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -18,14 +19,15 @@ var password = password_in;
 
 MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("Tododb");
-  dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {username : 0,password : 0}}).toArray(function(err, result) {
+  var dbo = db.db("dbSprog");
+  dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {_id : 0, username : 0,password : 0}}).toArray(function(err, result) {
     if (err) throw err;
     console.log(result);
+    privilege = result;
     db.close();
-    console.log(result.length)
+    //console.log(result.length);
     if (result.length == 0){
-      console.log("mads er en spasser")
+      console.log("Noget gik galt i ClientToServer!")
       res.send("fejl");
     }
     else{

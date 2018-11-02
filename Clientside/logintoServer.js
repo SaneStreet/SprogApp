@@ -21,7 +21,7 @@ function testLogin(){
         console.log(this.readyState+"   "+this.status)
         if (this.readyState == 4 && this.status == 200) {
             if(this.response=="fejl") {
-                alert("wrong info, you have lost your asian")
+                alert("Login fejlet!")
             }else{
                 window.location.href= "http://127.0.0.1:5500/menu/menuside.html"
                 document.cookie="loginId="+this.response+""
