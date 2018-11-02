@@ -22,7 +22,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   var dbo = db.db("dbSprog");
   dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {_id : 0, username : 0,password : 0}}).toArray(function(err, result) {
     if (err) throw err;
-    console.log(result);
+    console.log(result[0].privilege);
     privilege = result;
     db.close();
     //console.log(result.length);
