@@ -6,8 +6,6 @@ exports.login_as_client = function(req, res){
     //var x = dbfind.searchDB(user_name,password_in);
     //console.log(x)
     
-    var privilege = "noget fejl";
-    
     //res.send(x)
     console.log("Forbindelse oprettet")
 
@@ -23,7 +21,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {_id : 0, username : 0,password : 0}}).toArray(function(err, result) {
     if (err) throw err;
     console.log(result[0].privilege);
-    privilege = result;
+    privilege = result[0].privilege;
     db.close();
     //console.log(result.length);
     if (result.length == 0){
@@ -31,7 +29,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
       res.send("fejl");
     }
     else{
-      res.send( result);
+      res.send( privilege);
     }
   });
 });

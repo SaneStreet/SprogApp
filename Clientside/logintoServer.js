@@ -20,11 +20,44 @@ function testLogin(){
         console.log("inde")
         console.log(this.readyState+"   "+this.status)
         if (this.readyState == 4 && this.status == 200) {
-            if(this.response=="fejl") {
+            if(this.response == "fejl") {
                 alert("Login fejlet!")
             }else{
-                window.location.href= "http://127.0.0.1:5500/menu/menuside.html"
-                document.cookie="loginId="+this.response+""
+
+                switch(this.response){
+                    case "Kursist":
+                    window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
+                    break;
+
+                    case "Sprogmakker":
+                    window.location.href= "http://127.0.0.1:5500/menu/sprogmakker/sprogmakkerside.html"
+                    break;
+
+                    case "Underviser":
+                    window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                    break;
+
+                    case "":
+                    window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                }
+
+
+                /*if(this.response.value == "Kursist"){
+                    window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
+                    document.cookie="loginPrivilege="+this.response+""
+                }
+                if(this.response.value == "Sprogmakker"){
+                    window.location.href = "http://127.0.0.1:5500/menu/sprogmakker/sprogmakkerside.html"
+                    document.cookie="loginPrivilege="+this.response+""
+                }
+                if(this.response.value == "Underviser"){
+                    window.location.href = "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                    document.cookie="loginPrivilege="+this.response+""
+                }*/
+
+
+                //window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                //document.cookie="loginId="+this.response+""
                 //alert(document.cookie)
             }
             //udgået kodestykke
